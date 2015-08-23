@@ -1,0 +1,30 @@
+{
+  "name": "subredditor",
+  "version": "0.0.1",
+  "description": "Tool for styling subreddits locally featuring SASS, livereload, support for retrieving/updating the remote stylesheet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/osxi/subredditor.git"
+  },
+  "keywords": [
+    "reddit",
+    "subreddit",
+    "css",
+    "style"
+  ],
+  "author": "osxi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osxi/subredditor/issues"
+  },
+  "homepage": "https://github.com/osxi/subredditor#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-server-livereload": "^1.4.0"
+  }
+}
