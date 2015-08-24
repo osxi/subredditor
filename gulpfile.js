@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var minifyCss = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var server = require('gulp-server-livereload');
 
@@ -17,6 +18,7 @@ gulp.task('default', ['server']);
 gulp.task('sass', function() {
   gulp.src(paths.sassGlob)
     .pipe(sass().on('error', sass.logError))
+    .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest(paths.distDir));
 });
 
