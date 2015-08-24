@@ -1,7 +1,11 @@
 'use strict';
 
+var argv = require('yargs').argv;
+var del = require('del');
+var fs = require('fs');
 var gulp = require('gulp');
 var minifyCss = require('gulp-minify-css');
+var request = require('request');
 var sass = require('gulp-sass');
 var server = require('gulp-server-livereload');
 
@@ -35,4 +39,24 @@ gulp.task('server', ['sass'], function() {
       livereload: true,
       open: true
     }));
+});
+
+gulp.task('clean', function() {
+  del(['src/custom.scss', './dist/**'] , function(err, paths) {
+    console.log('Deleted files/folders:\n', paths.join('\n'));
+  });
+});
+
+gulp.task('download', ['clean'], function() {
+  var url = argv.subreddit;
+
+  if (url === undefined) {
+    console.log('please specify --subreddit, e.g. --subreddit=node');
+    process.exit(1);
+  }
+
+  url = 'http://reddit.com/r/' + url + '/stylesheet.css';
+
+  return request(url)
+    .pipe(fs.createWriteStream('./src/custom.scss'));
 });
