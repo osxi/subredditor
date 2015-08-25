@@ -30,6 +30,7 @@
     "gulp-minify-css": "^1.2.1",
     "gulp-sass": "^2.0.4",
     "gulp-server-livereload": "^1.4.0",
+    "lodash": "^3.10.1",
     "request": "^2.61.0",
     "yargs": "^3.21.0"
   }
