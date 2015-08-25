@@ -5,15 +5,19 @@ Tool for styling subreddits locally
   - SASS
   - livereload when styles change
   - subreddit template provided
+  - remote stylesheet retrieval
 
 ## usage
   1. (optional) paste reddit.com/r/yoursubreddit/stylesheet.css into `src/custom.scss`
+     OR
+     run `gulp download --subreddit=<subreddit_name>` to clone the remote stylesheet to `src/custom.scss`
   2. use `gulp` to start the development environment
-  3. make changes to `src/custom.scss` and your web browser will reload automatically
-  4. copy contents of `dist/custom.css` to your subreddit
+  3. browse http://localhost:8000
+  4. make changes to `src/custom.scss` and your web browser will reload automatically
+  5. copy contents of `dist/custom.css` to your subreddit
 
 ## TODO
-  - retrieve/upload stylesheet via Reddit API
+  - upload stylesheet via Reddit API
   - create more generic template
   
 ## more info
