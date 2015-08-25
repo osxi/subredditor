@@ -1,13 +1,13 @@
 'use strict';
 
-var argv = require('yargs').argv;
-var del = require('del');
-var fs = require('fs');
-var gulp = require('gulp');
-var minifyCss = require('gulp-minify-css');
-var request = require('request');
-var sass = require('gulp-sass');
-var server = require('gulp-server-livereload');
+import argv from 'yargs';
+import del from 'del';
+import fs from 'fs';
+import gulp from 'gulp';
+import minifyCss from 'gulp-minify-css';
+import request from 'request';
+import sass from 'gulp-sass';
+import server from 'gulp-server-livereload';
 
 var defaultFile = 'subreddit.html';
 
@@ -19,18 +19,18 @@ var paths = {
 
 gulp.task('default', ['server']);
 
-gulp.task('sass', function() {
+gulp.task('sass', () => {
   gulp.src(paths.sassGlob)
     .pipe(sass().on('error', sass.logError))
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest(paths.distDir));
 });
 
-gulp.task('sass:watch', function() {
+gulp.task('sass:watch', () => {
   gulp.watch(paths.sassGlob, ['sass']);
 });
 
-gulp.task('server', ['sass'], function() {
+gulp.task('server', ['sass'], () => {
   gulp.watch(paths.sassGlob, ['sass']);
 
   gulp.src([paths.srcGlob, paths.distDir])
@@ -41,13 +41,13 @@ gulp.task('server', ['sass'], function() {
     }));
 });
 
-gulp.task('clean', function() {
-  del(['src/custom.scss', './dist/**'] , function(err, paths) {
+gulp.task('clean', () => {
+  del(['src/custom.scss', './dist/**'] , (err, paths) => {
     console.log('Deleted files/folders:\n', paths.join('\n'));
   });
 });
 
-gulp.task('download', ['clean'], function() {
+gulp.task('download', ['clean'], () => {
   var url = argv.subreddit;
 
   if (url === undefined) {
@@ -55,7 +55,7 @@ gulp.task('download', ['clean'], function() {
     process.exit(1);
   }
 
-  url = 'http://reddit.com/r/' + url + '/stylesheet.css';
+  url = `http://reddit.com/r/${url}/stylesheet.css`;
 
   return request(url)
     .pipe(fs.createWriteStream('./src/custom.scss'));
