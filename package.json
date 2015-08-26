@@ -4,7 +4,7 @@
   "description": "Tool for styling subreddits locally featuring SASS, livereload, support for retrieving/updating the remote stylesheet",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/"
   },
   "repository": {
     "type": "git",
@@ -25,12 +25,14 @@
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-core": "^5.8.22",
+    "chai": "^3.2.0",
     "del": "^1.2.1",
     "gulp": "^3.9.0",
     "gulp-minify-css": "^1.2.1",
     "gulp-sass": "^2.0.4",
     "gulp-server-livereload": "^1.4.0",
     "lodash": "^3.10.1",
+    "mocha": "^2.2.5",
     "request": "^2.61.0",
     "yargs": "^3.21.0"
   }
