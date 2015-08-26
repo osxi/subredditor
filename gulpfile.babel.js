@@ -1,5 +1,6 @@
 'use strict';
 
+import config from './config';
 import del from 'del';
 import fs from 'fs';
 import gulp from 'gulp';
@@ -11,45 +12,40 @@ import sass from 'gulp-sass';
 import server from 'gulp-server-livereload';
 import yargs from 'yargs';
 
-var defaultFile = 'subreddit.html';
-
-var paths = {
-  distDir: './dist',
-  srcGlob: './src/**',
-  sassGlob: './src/**/*.scss'
-};
-
 gulp.task('default', ['server']);
 
 gulp.task('sass', () => {
-  return gulp.src(paths.sassGlob)
+  return gulp.src(config.paths.sassGlob)
     .pipe(sass().on('error', sass.logError))
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(gulp.dest(paths.distDir));
+    .pipe(minifyCss({
+      compatibility: config.css.minifyCompatability
+    }))
+    .pipe(gulp.dest(config.paths.distDir));
 });
 
 gulp.task('sass:watch', () => {
-  return gulp.watch(paths.sassGlob, ['sass']);
+  return gulp.watch(config.paths.sassGlob, ['sass']);
 });
 
 gulp.task('server', ['sass'], () => {
-  gulp.watch(paths.sassGlob, ['sass']);
+  gulp.watch(config.paths.sassGlob, ['sass']);
 
-  return gulp.src([paths.srcGlob, paths.distDir])
+  return gulp.src([config.paths.srcGlob, config.paths.distDir])
     .pipe(server({
-      defaultFile: defaultFile,
+      defaultFile: config.defaultFile,
       livereload: true,
       open: false
     }));
 });
 
 gulp.task('download', () => {
-  return clean().then(downloadCss.bind(this, paths));
+  return clean()
+    .then(downloadCss.bind(this, paths));
 });
 
 function clean() {
   return new RSVP.Promise((resolve, reject) => {
-    del(['src/custom.scss', './dist/**'] , (err, paths) => {
+    del(config.cleanPaths , (err, paths) => {
       if (err) {reject(err)}
       resolve(paths);
     });
@@ -68,5 +64,6 @@ function downloadCss(pathsCleaned) {
 
   url = `http://reddit.com/r/${url}/stylesheet.css`;
 
-  return request(url).pipe(fs.createWriteStream('./src/custom.scss'));
+  return request(url)
+    .pipe(fs.createWriteStream(config.css.downloadToFile));
 }
