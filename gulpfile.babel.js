@@ -46,11 +46,11 @@ gulp.task('download', () => {
 function clean() {
   return new RSVP.Promise((resolve, reject) => {
     del(config.cleanPaths , (err, paths) => {
-      if (err) {reject(err)}
+      if (err) {reject(err);}
       resolve(paths);
     });
   });
-};
+}
 
 function downloadCss(pathsCleaned) {
   var url = yargs.argv.subreddit;
@@ -64,6 +64,5 @@ function downloadCss(pathsCleaned) {
 
   url = `http://reddit.com/r/${url}/stylesheet.css`;
 
-  return request(url)
-    .pipe(fs.createWriteStream(config.css.downloadToFile));
+  return request(url).pipe(fs.createWriteStream(config.css.downloadToFile));
 }
