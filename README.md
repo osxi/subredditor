@@ -1,4 +1,4 @@
-# subredditor
+# subredditor [![Build Status](https://travis-ci.org/osxi/subredditor.svg)](https://travis-ci.org/osxi/subredditor)
 Tool for styling subreddits locally
 
 ## features
@@ -19,7 +19,7 @@ Tool for styling subreddits locally
 ## TODO
   - upload stylesheet via Reddit API
   - create more generic template
-  
+
 ## more info
   - https://www.reddit.com/wiki/styling
   - https://www.reddit.com/r/csshelp/wiki/index
