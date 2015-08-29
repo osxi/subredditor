@@ -1,4 +1,4 @@
-# subredditor [![Build Status](https://travis-ci.org/osxi/subredditor.svg)](https://travis-ci.org/osxi/subredditor) [![devDependency Status](https://david-dm.org/osxi/subredditor/dev-status.svg)](https://david-dm.org/osxi/subredditor#info=devDependencies)
+# subredditor [![Build Status](https://travis-ci.org/osxi/subredditor.svg)](https://travis-ci.org/osxi/subredditor) [![Code Climate](https://codeclimate.com/github/osxi/subredditor/badges/gpa.svg)](https://codeclimate.com/github/osxi/subredditor) [![devDependency Status](https://david-dm.org/osxi/subredditor/dev-status.svg)](https://david-dm.org/osxi/subredditor#info=devDependencies)
 Tool for styling subreddits locally
 
 ## features
