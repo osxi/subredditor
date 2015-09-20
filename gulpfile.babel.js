@@ -5,7 +5,6 @@ import del from 'del';
 import fs from 'fs';
 import gulp from 'gulp';
 import _ from 'lodash';
-import minifyCss from 'gulp-minify-css';
 import request from 'request';
 import RSVP from 'rsvp';
 import sass from 'gulp-sass';
@@ -17,9 +16,6 @@ gulp.task('default', ['server']);
 gulp.task('sass', () => {
   return gulp.src(config.paths.sassGlob)
     .pipe(sass().on('error', sass.logError))
-    .pipe(minifyCss({
-      compatibility: config.css.minifyCompatability
-    }))
     .pipe(gulp.dest(config.paths.distDir));
 });
 
