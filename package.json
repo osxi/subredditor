@@ -23,16 +23,16 @@
   },
   "homepage": "https://github.com/osxi/subredditor#readme",
   "devDependencies": {
-    "babel": "^5.8.21",
-    "babel-core": "^5.8.22",
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
     "chai": "^3.2.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
-    "gulp-sass": "^2.0.4",
+    "gulp-sass": "^3.1.0",
     "gulp-server-livereload": "^1.4.0",
-    "lodash": "^3.10.1",
-    "mocha": "^2.2.5",
+    "lodash": "^4.17.4",
+    "mocha": "^3.3.0",
     "request": "^2.61.0",
-    "yargs": "^3.21.0"
+    "yargs": "^7.1.0"
   }
 }
